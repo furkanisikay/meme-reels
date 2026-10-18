@@ -1,0 +1,29 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0A0F1C; }
+body { font-family: "Inter", sans-serif; color: #F2F5FA; }
+.mono { font-family: "DejaVu Sans Mono", monospace; }
+.ic { display: block; flex: none; }
+.amber { color: #FBBF24; }
+#stage { position: relative; width: 1080px; height: 1920px; overflow: hidden;
+  background: radial-gradient(1000px 700px at 85% 0%, rgba(56,189,248,.10), transparent 60%),
+              radial-gradient(900px 700px at 0% 100%, rgba(244,63,94,.08), transparent 60%), #0A0F1C; }
+.grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px); background-size: 60px 60px; }
+section { position: absolute; inset: 0; visibility: hidden; transform-origin: 50% 45%; }
+
+/* top caption (meme text) */
+.cap { position: absolute; left: 60px; right: 150px; top: 230px; text-align: center; font-family: "Inter Display", "Inter", sans-serif;
+  font-weight: 800; font-size: 70px; line-height: 1.08; letter-spacing: -0.02em; color: #fff;
+  -webkit-text-stroke: 3px #000; paint-order: stroke fill; text-shadow: 0 5px 0 #000, 0 0 30px rgba(0,0,0,.7); transform-origin: 50% 60%; z-index: 5; }
+
+/* full-frame meme */
+img.full { position: absolute; inset: 0; width: 1080px; height: 1920px; display: block; }
+.meme::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 640px; background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.55)); }
+.quote { position: absolute; left: 70px; right: 160px; top: 1330px; text-align: center; font-weight: 800; font-size: 60px; line-height: 1.12; color: #FDE047;
+  -webkit-text-stroke: 3px #000; paint-order: stroke fill; text-shadow: 0 4px 0 #000, 0 0 24px rgba(0,0,0,.8); z-index: 4; }
+
+/* karaoke subtitle */
+.sub { position: absolute; left: 60px; right: 150px; top: 1350px; text-align: center; font-weight: 900; font-size: 76px; line-height: 1.1; letter-spacing: -0.01em;
+  color: #fff; -webkit-text-stroke: 4px #000; paint-order: stroke fill; text-shadow: 0 6px 0 #000, 0 0 30px rgba(0,0,0,.7); z-index: 10; }
+.sub span { display: inline-block; margin: 0 10px; transform-origin: 50% 70%; }
+.sub span.on { color: #FDE047; }
+

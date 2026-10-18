@@ -1,0 +1,53 @@
+{
+  "title": "ardupilot-mcp - Reels meme TR",
+  "voice": "tr-TR-EmelNeural",
+  "rate": "+6%",
+  "clips": {
+    "neoldu":  {"dm": "x587xuk", "start": 37.80, "dur": 1.06, "cropx": 135, "quote": "— Ne oldu?"},
+    "say":     {"dm": "x14lok5", "start": 0.00,  "dur": 2.50, "cropx": 155, "quote": "— Yüz, yüz, iki yüz, yüz…"},
+    "denmedi": {"dm": "x4ifbbo", "start": 16.40, "dur": 2.85, "cropx": 245, "quote": "— Bana böyle bir şey söylenmedi. Söyleseydi ben gelmezdim."},
+    "bekle":   {"dm": "x587xuk", "start": 25.85, "dur": 1.55, "cropx": 115, "quote": "— Neyi bekliyorsun Behzat?"}
+  },
+  "lines": {
+    "n1": {"say": "Dronum yirmi metreden düştü.", "show": "Drone'um 20 metreden düştü."},
+    "n2": {"say": "Cevap uçuş kaydında. Bir milyon beş yüz elli sekiz bin satır."},
+    "n3": {"say": "Ben de logu ArduPilot em si pi'ye verdim.", "show": "Ben de logu ardupilot-mcp'ye verdim."},
+    "n4": {"say": "Cevap: motor iki itki kaybediyor. Uçuş kontrolcüsü onu sonuna kadar sürmüş, yetmemiş."},
+    "n5": {"say": "Ücretsiz ve açık kaynak."},
+    "n6": {"say": "Kendi logunu sor. Link profilde."}
+  },
+  "scenes": [
+    {"id": "a",  "line": "n1", "html": "scenes/crash.html", "pad": 0.25},
+    {"id": "m1", "clip": "neoldu"},
+    {"id": "b",  "line": "n2", "html": "scenes/log.html", "cap": "Logu açtım:"},
+    {"id": "m2", "clip": "say", "cap": "1.558.457 satırı sayarken ben:"},
+    {"id": "m3", "clip": "denmedi"},
+    {"id": "c",  "line": "n3", "html": "scenes/chat.html", "pad": 0.35},
+    {"id": "d",  "line": "n4", "html": "scenes/motors.html", "pad": 0.3},
+    {"id": "e",  "line": "n5", "html": "scenes/cta.html"},
+    {"id": "m4", "clip": "bekle", "cap": "Logun elinde, hâlâ sormadın mı?"},
+    {"id": "f",  "line": "n6", "html": "scenes/end.html", "pad": 0.9}
+  ],
+  "music": {"style": "phonk", "bpm": 120, "level": 0.42, "fade_out": 0.6, "mute": [["a@düştü+0.05", "b"]]},
+  "sfx": [
+    {"fx": "whoosh", "at": "cuts", "gain": 0.5},
+    {"fx": "fall", "at": "a", "until": "a@düştü+0.1", "gain": 0.45},
+    {"fx": "boom", "at": "a@düştü+0.1", "gain": 1.0},
+    {"fx": "click", "at": "b@bir", "until": "b.end-0.4", "every": 0.06, "gain": 0.3},
+    {"fx": "beep", "at": "b.end-0.45", "every": 0.16, "count": 3, "args": [988], "gain": 0.4},
+    {"fx": "click", "at": "c+0.4", "every": 0.043, "count": 21, "jitter": 0.01, "gain": 0.5},
+    {"fx": "beep", "at": "c+1.6", "until": "c.end-0.5", "every": 0.19, "args": [1400, 0.04], "gain": 0.16},
+    {"fx": "ding", "at": "c.end-0.5", "gain": 0.45},
+    {"fx": "hit", "at": "d", "gain": 0.8},
+    {"fx": "beep", "at": "d@motor", "every": 0.5, "count": 4, "args": [660, 0.18], "gain": 0.28},
+    {"fx": "hit", "at": "d@yetme", "gain": 0.8},
+    {"fx": "click", "at": "e+0.1", "every": 0.041, "count": 17, "jitter": 0.008, "gain": 0.5},
+    {"fx": "ding", "at": "e+0.9", "gain": 0.35},
+    {"fx": "tone", "at": "e@ücretsiz", "args": [1047, 0.25, 0.08], "gain": 0.35},
+    {"fx": "tone", "at": "e@açık", "args": [1047, 0.25, 0.08], "gain": 0.35},
+    {"fx": "tone", "at": "e@kaynak+0.45", "args": [1047, 0.25, 0.08], "gain": 0.35},
+    {"fx": "whoosh", "at": "f", "args": [1.0], "gain": 0.5},
+    {"fx": "sparkle", "at": "f+0.8", "gain": 0.45},
+    {"fx": "tone", "at": "f@link", "every": 0.3, "count": 3, "gain": 0.35}
+  ]
+}
