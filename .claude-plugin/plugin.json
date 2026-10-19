@@ -1,6 +1,6 @@
 {
   "name": "meme-reels",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Türkçe meme klipleri, TTS anlatım ve veriyle beslenen animasyon sahnelerinden dikey Instagram Reels / TikTok videosu üretir.",
   "author": { "name": "Softivation" },
   "license": "UNLICENSED",

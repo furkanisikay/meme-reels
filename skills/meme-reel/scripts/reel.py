@@ -10,6 +10,7 @@
     reel.py build PROJECT                  timeline.json + reel.html
     reel.py preview PROJECT [--at 1,2.5]   key frames -> build/sheet.png
     reel.py render PROJECT                 all frames + audio mix -> out/<title>.mp4
+    reel.py render PROJECT --from 26.7     keep earlier frames, re-render from 26.7 s on
     reel.py all PROJECT                    clips (missing only), tts, build, preview, render
 
 PROJECT holds plan.json, style.css, fx.js, optional data.js and scenes/*.html.
@@ -290,7 +291,7 @@ render(0);
 
 
 # ---------------------------------------------------------------- capture
-def capture(build, outdir, dur=None, times=None):
+def capture(build, outdir, dur=None, times=None, start=0):
     env = dict(os.environ)
     if Path("/opt/node22/lib/node_modules").exists():
         env["NODE_PATH"] = "/opt/node22/lib/node_modules"
@@ -298,6 +299,8 @@ def capture(build, outdir, dur=None, times=None):
     cmd = ["node", str(HERE / "capture.js"), str(build / "reel.html"), str(outdir), str(FPS), str(dur or 1)]
     if times:
         cmd.append(",".join(f"{x:.3f}" for x in times))
+    elif start:
+        cmd += ["", str(start)]
     run(cmd, env=env)
 
 
@@ -428,9 +431,16 @@ def cmd_render(args):
     project, plan, build = load_plan(args.project)
     T = json.loads((build / "timeline.json").read_text())
     frames = build / "frames"
-    if frames.exists():
+    start = round(getattr(args, "from_sec", 0) * FPS)
+    if start and len(list(frames.glob("f*.png"))) < start:
+        sys.exit("--from needs a complete earlier render in build/frames")
+    if frames.exists() and not start:
         shutil.rmtree(frames)
-    capture(build, frames, dur=T["total"])
+    if start:
+        for f in frames.glob("f*.png"):
+            if int(f.stem[1:]) >= start:
+                f.unlink()
+    capture(build, frames, dur=T["total"], start=start)
     cmd_mix(args)
     out = project / "out" / f"{plan.get('title', project.name)}.mp4"
     out.parent.mkdir(exist_ok=True)
@@ -478,6 +488,9 @@ def main():
         s.add_argument("--verify", action="store_true", help="transcribe the result with Whisper")
         if name == "preview":
             s.add_argument("--at", help="comma-separated times in seconds")
+        if name == "render":
+            s.add_argument("--from", dest="from_sec", type=float, default=0,
+                           help="re-render only from this second on (scene timings must be unchanged)")
     args = p.parse_args()
     globals()["cmd_" + args.cmd](args)
 

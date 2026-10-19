@@ -15,7 +15,7 @@ onun `plan.json`, `fx.js` ve `scenes/` dosyalarını oku; bütün özellikleri o
 ## Sınırlar
 
 - **Hiçbir şeyi yayınlama.** Videoyu kullanıcıya dosya olarak ver. Buffer'a veya başka bir platforma taslak
-  bile, ancak kullanıcı o anda açıkça onaylarsa girilir.
+  bile, ancak kullanıcı o anda açıkça onaylarsa girilir. Yayın adımları `buffer-sosyal-icerik` skill'inde.
 - **Ekrandaki her sayı ve iddia doğrulanmış olsun.** Log, ölçüm, araç çıktısı ya da kullanıcının verdiği
   kaynak göster. Doğrulayamadığın bir iddiayı ("1 dakikada çözdü") videoya koyma.
 - **Not satırı koyma.** Simülasyon ya da demo veri kullandıysan bile videoya ve açıklamaya "Not:" veya
@@ -33,6 +33,8 @@ Kullanıcı açıklama (caption) isterse:
 - Birinin arkadaşına yazdığı gibi, gündelik Türkçeyle yaz. Sonda yoruma davet eden tek bir soru olsun.
 - **"Not:" ya da dürüstlük satırı ekleme.** Simülasyon, demo veri, yapay zeka kullanımı gibi açıklamalar
   açıklama metnine girmez. Yapay zeka etiketi gerekiyorsa platformun kendi ayarıyla işaretlenir.
+- Instagram açıklamasındaki link tıklanmaz. Videoda ve metinde "Link profilde" diyorsan profilde link olduğunu
+  kullanıcıya teyit ettir; bio'yu hiçbir API değiştiremez. YouTube açıklamasına linkin kendisini yaz.
 
 ## Kurulum
 
@@ -46,7 +48,9 @@ PyAV) ve çözümleri `references/pitfalls.md` içinde. Takıldığında oraya b
 ## Akış
 
 1. **Gerçekleri topla.** Videonun iddiasını kaynağından çıkar: araç çıktısı, log, ölçüm. Sayıları ve
-   zamanları bir yere yaz; sahneler bu değerleri kullanacak.
+   zamanları bir yere yaz; sahneler bu değerleri kullanacak. Ekranda kurulum komutu varsa paketin kayıtta
+   (PyPI, npm) gerçekten durduğunu doğrula ve izleyicinin tanıdığı komutu yaz: `pip install paket`, `npm i
+   paket`. `uvx` gibi araçlar MCP ayar dosyası içindir; genel izleyiciye yabancı gelir.
 2. **Senaryoyu yaz** (aşağıdaki kalıp). Her anlatım cümlesi 2-7 sn, her meme 1-3 sn.
 3. **Meme seç.** Önce `references/tr-memes.md` kataloğuna bak (repliği ve zaman damgası doğrulanmış klipler).
    Yeni klip için `python3 scripts/reel.py search "erdal bakkal"` ile Dailymotion'da ara, indirip
@@ -66,6 +70,12 @@ PyAV) ve çözümleri `references/pitfalls.md` içinde. Takıldığında oraya b
    anlatım ve meme replikleri doğru duyuluyorsa müzik konuşmayı bastırmıyor demektir.
 9. Videoyu kullanıcıya gönder. Hangi klipleri hangi kaynaktan aldığını, ekledikleri riskleri (telif, TTS
    lisansı, düşük çözünürlüklü kaynak) ve senin itiraz ettiğin kurgu kararlarını kısaca yaz.
+10. **Düzeltme turu.** Kullanıcı bir sahnede metin ya da görsel değişikliği isterse anlatımı ve sahne
+    sürelerini değiştirmeden düzelt, `build` + `preview --at` ile o kareye bak, sonra
+    `reel.py render PROJE --from <sahnenin başlangıç saniyesi>` çalıştır. Önceki kareler korunur, yalnız o
+    noktadan sonrası yeniden çizilir. Anlatım değiştiyse süreler kayar; o zaman tam render gerekir.
+11. **Yayın.** Kullanıcı "paylaşalım" derse `buffer-sosyal-icerik` skill'ine geç: video oradaki barındırma
+    adımıyla yüklenir, Reel, Shorts ve link çıkartmalı story aynı dosyadan gider.
 
 ## Senaryo kalıbı
 
@@ -165,9 +175,17 @@ Tamamen sentetik bir video (TTS sesi, kusursuz vektör sahneler, her efektin kel
 - **Tanıdık format:** Hesabın kendi yüzü ya da sesi olan bir giriş (1 sn "bakın ne oldu") meme serisinden
   daha insani durur.
 
+## Önceki reel'lerden çıkan dersler
+
+- Tutan şey: tam ekran dikey meme klibi, klibin kendi sesiyle; arada kısa anlatım sahnesi; kelime kelime altyazı.
+- Kullanıcı yine de "yapay zeka gibi" buldu. Bir sonrakinde yukarıdaki maddelerden en az birini (gerçek ekran
+  kaydı ya da kullanıcının kendi sesi) teklif et.
+- Kapanış ve açıklamaya not, uyarı, "simülasyondur" satırı eklemek istenmedi.
+- Yeni bir reel'e başlarken aynı hesabın son reel'ine bak, aynı memeleri aynı sırayla tekrar kullanma.
+
 ## Dosyalar
 
-- `scripts/reel.py`: bütün akış (search, stt, still, clips, tts, voice, build, preview, mix, render, all)
+- `scripts/reel.py`: bütün akış (search, stt, still, clips, tts, voice, build, preview, mix, render [--from], all)
 - `scripts/engine.js`, `scripts/base.css`: kare motoru ve ortak stiller
 - `scripts/synth.py`: müzik ve efekt üreteçleri
 - `scripts/capture.js`: Playwright ile kare çekimi

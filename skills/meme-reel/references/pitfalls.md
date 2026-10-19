@@ -14,3 +14,5 @@
 | `rm` engelleniyor | Güvenlik kancası toplu silmeyi reddediyor | Yeni klasör adıyla çalış (`frames2`); `reel.py` kendi `build/` klasörlerini `shutil.rmtree` ile temizler. |
 | Kaynak 288p, büyütünce bulanık | Dailymotion'daki eski yüklemeler | `face` modu yüzü 4:5 kırpıp 1080x1350'ye çıkarır, `unsharp` uygular, arkaya aynı sahnenin bulanığını koyar. Daha iyisi için kullanıcıdan HD kaynak iste. |
 | Meme replikten sonra küfür / alakasız söz | Klip kesimi uzun | `dur`'u Whisper zamanına göre kısalt, `clips` çıktısındaki "heard" satırını oku. |
+| Terminal kartında komut taşıyor ya da alt satıra kayıyor | Komut uzadı (`pip install ...`), 52 px mono yazı 860 px karta sığmıyor | `.tbody` için `font-size: 44px; white-space: nowrap;` ver ve `preview --at` ile kareye bak. |
+| `render --from` sonrası sahne kayık | Anlatım değişti, sahne süreleri kaydı | `--from` yalnız süreler aynıyken kullanılır; anlatım değiştiyse tam `render` çalıştır. |
