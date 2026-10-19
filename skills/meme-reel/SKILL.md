@@ -75,7 +75,8 @@ PyAV) ve çözümleri `references/pitfalls.md` içinde. Takıldığında oraya b
     `reel.py render PROJE --from <sahnenin başlangıç saniyesi>` çalıştır. Önceki kareler korunur, yalnız o
     noktadan sonrası yeniden çizilir. Anlatım değiştiyse süreler kayar; o zaman tam render gerekir.
 11. **Yayın.** Kullanıcı "paylaşalım" derse `buffer-sosyal-icerik` skill'ine geç: video oradaki barındırma
-    adımıyla yüklenir, Reel, Shorts ve link çıkartmalı story aynı dosyadan gider.
+    adımıyla yüklenir, Reel, Shorts ve story aynı dosyadan gider. Story'deki link çıkartması otomatik
+    yayınlanmaz; oradaki story bölümüne bak.
 
 ## Senaryo kalıbı
 
