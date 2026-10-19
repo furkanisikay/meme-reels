@@ -25,6 +25,15 @@ onun `plan.json`, `fx.js` ve `scenes/` dosyalarını oku; bütün özellikleri o
 - **TTS lisansı:** `edge-tts` ücretsiz Edge sesli okuma servisini kullanır; ticari kullanımı gri alanda kalır.
   Ticari yayında aynı sesler Azure Speech'te lisanslı olarak var, ya da kullanıcının kendi sesi kullanılabilir.
 
+## Paylaşım metni
+
+Kullanıcı açıklama (caption) isterse:
+
+- Videodaki cümleleri tekrar etme. Açıklama videonun anlatmadığını anlatır: ürün ne, kime yarar, nerede bulunur.
+- Birinin arkadaşına yazdığı gibi, gündelik Türkçeyle yaz. Sonda yoruma davet eden tek bir soru olsun.
+- **"Not:" ya da dürüstlük satırı ekleme.** Simülasyon, demo veri, yapay zeka kullanımı gibi açıklamalar
+  açıklama metnine girmez. Yapay zeka etiketi gerekiyorsa platformun kendi ayarıyla işaretlenir.
+
 ## Kurulum
 
 ```bash
