@@ -37,7 +37,7 @@
 /* cta */
 .term { position: absolute; left: 70px; right: 150px; top: 380px; background: #070B15; border: 2px solid #24324F; border-radius: 26px; overflow: hidden; opacity: 0; }
 .tbar { height: 50px; background: #121A2E; display: flex; gap: 10px; align-items: center; padding: 0 20px; } .tbar i { width: 15px; height: 15px; border-radius: 50%; background: #2C3B60; }
-.tbody { padding: 30px 32px 34px; font-size: 52px; } .pr { color: #34D399; }
+.tbody { padding: 30px 32px 34px; font-size: 44px; white-space: nowrap; } .pr { color: #34D399; }
 .tok { font-size: 30px; color: #34D399; margin-top: 18px; opacity: 0; }
 .badges { position: absolute; left: 70px; right: 150px; top: 760px; display: flex; flex-direction: column; gap: 26px; }
 .bdg { display: flex; gap: 22px; align-items: center; font-size: 70px; font-weight: 900; letter-spacing: -0.02em; background: rgba(52,211,153,.08);
@@ -48,4 +48,3 @@
 .pill { position: absolute; left: 70px; right: 150px; top: 960px; display: flex; gap: 22px; align-items: center; background: rgba(56,189,248,.08); border: 2px solid rgba(56,189,248,.35); border-radius: 999px; padding: 18px 34px; opacity: 0; }
 .pill b { display: block; font-size: 46px; } .pill span { display: block; font-size: 25px; color: #C9D3E6; }
 .arrow { position: absolute; left: 50%; margin-left: -260px; width: 440px; top: 1120px; display: flex; gap: 14px; align-items: center; justify-content: center; background: #FBBF24; color: #0A0F1C; border-radius: 999px; padding: 16px 28px; font-size: 44px; font-weight: 900; opacity: 0; }
-.note { position: absolute; left: 70px; right: 150px; top: 1260px; text-align: center; font-size: 24px; color: #6B7894; opacity: 0; }

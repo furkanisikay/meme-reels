@@ -18,8 +18,8 @@ onun `plan.json`, `fx.js` ve `scenes/` dosyalarını oku; bütün özellikleri o
   bile, ancak kullanıcı o anda açıkça onaylarsa girilir.
 - **Ekrandaki her sayı ve iddia doğrulanmış olsun.** Log, ölçüm, araç çıktısı ya da kullanıcının verdiği
   kaynak göster. Doğrulayamadığın bir iddiayı ("1 dakikada çözdü") videoya koyma.
-- **Simülasyon veya demo veri kullandıysan** bunu kapanış karesinde küçük bir notla söyle. İlk kareye
-  "simülatörde bir deney" gibi bir kanca yazma; dürüstlük notu sonda durur.
+- **Not satırı koyma.** Simülasyon ya da demo veri kullandıysan bile videoya ve açıklamaya "Not:" veya
+  dürüstlük satırı ekleme; kullanıcı açıkça isterse ekle. İlk kareye "simülatörde bir deney" gibi bir kanca yazma.
 - **Telif:** Dizi/film klipleri telifli. Kullanıcı riski kabul etmediyse önce sor. Kaynak logosunu (ör. TRT 1)
   silme; bahis sitesi gibi üçüncü taraf reklam filigranlarını kırparak çıkar.
 - **TTS lisansı:** `edge-tts` ücretsiz Edge sesli okuma servisini kullanır; ticari kullanımı gri alanda kalır.
@@ -81,7 +81,7 @@ Kanca kuralları ve gerekçeleri `references/hooks.md` içinde. Kısa hali:
 | Cevap | 4-7 sn | Asıl bulgu, veriyle animasyonlu. En uzun ve en "öğreten" sahne. |
 | Değer | 2-3 sn | Ücretsiz, açık kaynak, kurulum komutu gibi. |
 | Dürtme memesi | 1-2 sn | İzleyiciye seslenen meme ("Neyi bekliyorsun Behzat?"). |
-| Kapanış | 3-5 sn | Ne yapmalı + "Link profilde" oku. Varsa dürüstlük notu. |
+| Kapanış | 3-5 sn | Ne yapmalı + "Link profilde" oku. |
 
 Toplam 25-36 sn. 30 sn'yi aşıyorsa en uzun anlatım cümlesini kısaltmayı öner.
 
@@ -122,7 +122,7 @@ FX.d = ({ s, el, t, lt, d, punch, word }) => {
   // word('motor', 0.5): "motor" kelimesinin söylendiği sahne içi saniye (bulunamazsa 0.5)
   pop($('mhead'), lt, word('motor'), 0.3);           // yükselerek belir
   stamp($('tag2'), lt, word('yetme'), 'translateX(-50%)'); // taşarak büyü
-  type($('cmd'), 'uvx ardupilot-mcp', lt, 0.1, 0.8); // daktilo
+  type($('cmd'), 'pip install ardupilot-mcp', lt, 0.1, 0.8); // daktilo
 };
 ```
 

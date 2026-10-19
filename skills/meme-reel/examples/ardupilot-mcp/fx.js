@@ -77,7 +77,7 @@ FX.d = ({ t, lt, d, word }) => {
 // e: install command, then one badge per spoken word
 FX.e = ({ lt, word }) => {
   pop($('term'), lt, 0.0, 0.2);
-  type($('tcmd'), 'uvx ardupilot-mcp', lt, 0.1, 0.8);
+  type($('tcmd'), 'pip install ardupilot-mcp', lt, 0.1, 0.8);
   document.querySelector('.k-cta .caret').style.opacity = lt < 0.9 && Math.floor(lt * 5) % 2 === 0 ? 1 : 0;
   pop($('tok'), lt, 0.9, 0.2, 10);
   pop($('bd1'), lt, word('ücretsiz', 0.2), 0.25, 30);
@@ -98,5 +98,4 @@ FX.f = ({ t, lt, word }) => {
   const ta = word('link', 1.6);
   pop($('arrow'), lt, ta, 0.3);
   if (lt > ta + 0.3) $('arrow').style.transform = `translateY(${Math.abs(Math.sin((lt - ta - 0.3) * 6)) * 18}px)`;
-  pop($('note'), lt, ta + 0.2, 0.3, 0);
 };

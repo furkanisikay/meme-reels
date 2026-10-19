@@ -36,4 +36,3 @@ kalıpları onlardan çıkar ve bu dosyaya ekle.
 
 - Net tek eylem: "Kendi logunu sor. Link profilde." Oku animasyonla işaret et.
 - Kapanış metnini düz yazı kartı olarak bırakma; görselle destekle (kalkan drone, onay rozeti, terminal).
-- Dürüstlük notu (simülasyon, demo veri) burada, küçük puntoyla.
